@@ -8,12 +8,9 @@ from fabric.api import env, put, run, local
 from os.path import exists
 from datetime import datetime
 
-SSH_KEY_FILENAME = "~/.ssh/school"
-WEB_SERVERS = ["18.209.223.53", "54.160.76.99"]
-
-env.hosts = WEB_SERVERS
-env.user = 'ubuntu'
-env.key_filename = SSH_KEY_FILENAME
+env.hosts = ["18.209.223.53", "54.160.76.99"]
+env.user = "ubuntu"
+env.key_filename = "~/.ssh/school"
 
 def do_deploy(archive_path):
     """ An archive is distributed to web_servers and deployed """
