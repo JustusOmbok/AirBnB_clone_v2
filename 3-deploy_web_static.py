@@ -26,8 +26,8 @@ def do_pack():
     else:
         return None
 
-def do_deploy():
-    def do_deploy(archive_path):
+def do_deploy(archive_path):
+
     """ An archive is distributed to web_servers and deployed """
     if not exists(archive_path):
         return False
