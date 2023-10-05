@@ -4,6 +4,7 @@
 from fabric.api import local
 from datetime import datetime
 
+
 def do_pack():
 
     """ Generates a .tgz archive """
@@ -19,4 +20,3 @@ def do_pack():
         return "versions/{}".format(archive_name)
     else:
         return None
-
