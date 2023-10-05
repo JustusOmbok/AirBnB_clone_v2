@@ -28,7 +28,7 @@ def do_pack():
 
 def do_deploy(archive_path):
 
-    """ An archive is distributed to web_servers and deployed """
+    """ An archive is distributed to web_servers and deployed. """
     if not exists(archive_path):
         return False
 
@@ -52,7 +52,7 @@ def do_deploy(archive_path):
 
 def deploy():
     """
-    Deploys web_static content to web_servers
+    Deploys web_static content to web_servers.
     """
     archive_path = do_pack()
 
