@@ -9,8 +9,6 @@ from os.path import exists
 from datetime import datetime
 
 env.hosts = ["18.209.223.53", "54.160.76.99"]
-env.user = "ubuntu"
-env.key_filename = "~/.ssh/school"
 
 def do_deploy(archive_path):
     """ An archive is distributed to web_servers and deployed """
