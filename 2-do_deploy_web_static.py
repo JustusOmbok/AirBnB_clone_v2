@@ -19,8 +19,9 @@ def do_deploy(archive_path):
     try:
         put(archive_path, '/tmp/')
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-        release_folder = "/data/web_static/releases/web_static_{}/"
-            .format(timestamp)
+        release_folder = (
+                "/data/web_static/releases/web_static_{}/".format(timestamp)
+        )
         run("mkdir -p {}".format(release_folder))
         run("tar -xzf /tmp/{} -C {}"
             .format(archive_path.split("/")[-1], release_folder))
