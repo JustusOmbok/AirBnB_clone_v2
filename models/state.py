@@ -18,7 +18,9 @@ class State(BaseModel, Base):
     else:
         @property
         def cities(self):
-            """Returns the list of City instances with state_id = current State.id"""
+            """Returns the list of City instances.
+            With state_id = current State.id
+            """
             from models import storage
             from models.city import City
 

@@ -80,7 +80,6 @@ class FileStorage:
         except (AttributeError, KeyError):
             pass
 
-
     def close(self):
         """Closes the storage engine."""
         self.reload()

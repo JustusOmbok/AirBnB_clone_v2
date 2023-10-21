@@ -20,6 +20,7 @@ classes = {"City": City,
            "Review": Review,
            "Amenity": Amenity}
 
+
 class DBStorage:
     """Class that manages storage of hbnb models using sqlalchemy and mysql"""
 
@@ -38,10 +39,8 @@ class DBStorage:
         if getenv('HBNB_ENV') == 'test':
             Base.metadata.drop_all(self.__engine)
 
-
     def all(self, cls=None):
         """Queries all objects of a specific class"""
-
 
         objects = {}
         query = []
