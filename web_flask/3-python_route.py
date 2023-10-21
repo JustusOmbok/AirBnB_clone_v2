@@ -1,0 +1,41 @@
+#!/usr/bin/python3
+""" Flask web app with routes.
+"""
+from flask import Flask
+
+
+app = Flask(__name__)
+app.url_map.strict_slashes = False
+
+
+@app.route('/')
+def hello_hbnb():
+    """ Displays "Hello HBNB" at the root.
+    """
+    return "Hello HBNB!"
+
+
+@app.route('/hbnb')
+def hbnb():
+    """ Displays "HBNB" at /hbnb route.
+    """
+    return "HBNB"
+
+
+@app.route('/c/<text>')
+def c_route(text):
+    """ Displays "C " followed by the value of the text.
+    """
+    return "C " + text.replace("_", " ")
+
+
+@app.route('/python/')
+@app.route('/python/<text>')
+def python_route(text="is cool"):
+    """ Displays Python followed by the value of the text.
+    """
+    return "Python " + text.replace("_", " ")
+
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)
