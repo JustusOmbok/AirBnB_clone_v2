@@ -4,7 +4,6 @@
 from flask import Flask, render_template
 from models import storage
 from models.state import State
-from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 
@@ -16,18 +15,21 @@ app.url_map.strict_slashes = False
 @app.route('/hbnb', methods=['GET'])
 def hbnb():
     """Displays Airbnb filters."""
-    states = sorted(storage.all(State).values(), key=lambda state: state.name)
-    cities = sorted(storage.all(City).values(), key=lambda city: city.name)
-    amenities = sorted(storage.all(Amenity).values(),
-                       key=lambda amenity: amenity.name)
-    places = sorted(storage.all(Place).values(), key=lambda place: place.name)
-    return render_template(
-            '100-hbnb.html',
-            states=states,
-            cities=cities,
-            amenities=amenities,
-            places=places
-            )
+    all_states = list(storage.all(State).values())
+    amenities = list(storage.all(Amenity).values())
+    places = list(storage.all(Place).values())
+
+    all_states.sort(key=lambda state: state.name)
+    amenities.sort(key=lambda amenity: amenity.name)
+    places.sort(key=lambda place: place.name)
+    for state in all_states:
+        state.cities.sort(key=lambda city: city.name)
+    ctxt = {
+            'states': all_states,
+            'amenities': amenities,
+            'places': places
+    }
+    return render_template('100-hbnb.html', **ctxt)
 
 
 @app.teardown_appcontext
